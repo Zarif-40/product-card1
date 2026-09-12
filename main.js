@@ -1,45 +1,54 @@
-const firstProductCard = document.querySelector(".product-card");
-const highlightButton = document.querySelector("#highlight-first-card");
-const greenColorHash = "#00ff00";
-const violetColorHash = "#ff00ff";
-const googleURL = "http://google.com";
-const outputLogButton = document.querySelector("#output-console-log");
+import "./comments.js";
+import "./products.js";
+import "./homework-6.js";
+import "./homework-7.js";
+import "./homework-8.js";
+import "./homework-9.js";
+import "./homework-10.js";
+import "./homework-11.js";
+import { Modal } from './modal.js';
+import { Form } from './form.js';
 
-highlightButton.addEventListener("click", () => {
-  firstProductCard.style.backgroundColor = greenColorHash;
-});
-
-const productCards = document.querySelectorAll(".product-card");
-const highlightAllButton = document.querySelector("#highlight-all-card");
-
-highlightAllButton.addEventListener("click", () => {
-  productCards.forEach((card) => {
-    card.style.backgroundColor = violetColorHash;
-  });
-});
-
-const openGoogleButton = document.querySelector("#open-google");
-
-openGoogleButton.addEventListener("click", () => {
-  window.open(googleURL);
-});
-
-outputLogButton.addEventListener("click", () =>
-  outputConsoleLog("Выбери свой продукт"),
-);
-
-function outputConsoleLog(message) {
-  alert(message);
-  console.log(message);
+class Phone {
+  constructor(brand, model, price) {
+    this.brand = brand;
+    this.model = model;
+    this.price = price;
+  }
+  getInfo() {
+    return `${this.brand} ${this.model} ${this.price} $`;
+  }
+  makeCall(number) {
+    console.log(`Звонок на номер ${number} с ${this.brand} ${this.model}...`);
+  }
 }
 
-const mainTitle = document.querySelector(".page-title");
-mainTitle.addEventListener("mouseenter", function (event) {
-  const titleText = event.target.textContent;
-  console.log(titleText);
-});
+class Smartphone extends Phone {
+  constructor(brand, model, price, storage, os) {
+    super(brand, model, price);
+    this.storage = storage;
+    this.os = os;
+  }
+  getInfo() {
+    return `${super.getInfo()}, Память: ${this.storage} ГБ, ОС: ${this.os}`;
+  }
+  installApp(appName) {
+    console.log(`Установите приложения "${appName}" на ${this.brand} ${this.model} (${this.os})...`);
+  }
+}
 
-const backgroundColorButton = document.getElementById("toggle-own-color");
-backgroundColorButton.addEventListener("click", () => {
-  backgroundColorButton.classList.toggle("red-bg");
-});
+const myPhone = new Smartphone('Samsung', 'Galaxy S25', 1000, 256, 'Android');
+console.log(myPhone.getInfo());
+myPhone.makeCall('+77077077070');
+myPhone.installApp('Telegram');
+
+const registrationModal = new Modal('modal');
+const openButton = document.querySelector('.open-modal-btn');
+
+if (openButton) {
+  openButton.addEventListener('click', () => {
+    registrationModal.open();
+  });
+}
+
+const registrationForm = new Form('register-form');

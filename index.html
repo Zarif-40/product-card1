@@ -20,6 +20,7 @@
     <button id="output-console-log">Вывести сообщение в консоль лог</button>
     <button id="toggle-own-color">Поменять мой цвет</button>
     <button class="open-modal-btn">Регистрация</button>
+    
     <div class="products-grid">
         <img src="background_dandelios.png" alt="" class="page-background">
         <template id="product-card-template">
@@ -37,6 +38,7 @@
             </div>
         </template>
     </div>
+
     <footer class="footer">
         <div class="footer__container">
             <div class="footer__info">
@@ -69,11 +71,14 @@
             <a href="#" class="footer__copyright">www.product-cards.com©all right reserve</a>
         </div>
     </footer>
+
+    <!-- Оставляем ТОЛЬКО это окно. Класс изменен на modal для точного совпадения со стилями -->
     <div class="overlay">
-        <div class="modal">
+        <div class="modal" id="modal">
             <button type="button" class="close-modal-btn">&times;</button>
             <h2>Регистрация</h2>
-            <form class="register-form">
+
+            <form class="register-form" id="register-form">
                 <label>
                     Имя:
                     <input type="text" name="firstName" placeholder="Введите имя" required />
@@ -96,19 +101,15 @@
                 </label>
                 <label>
                     Повторите пароль:
-                    <input type="password" id="confirm-password" name="confirmPassword" placeholder="Повторите пароль"
-                        required />
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Повторите пароль" required />
                 </label>
                 <button type="submit">Отправить</button>
             </form>
         </div>
     </div>
-    <script src="main.js"></script>
-    <script src="homework-7.js"></script>
-    <script src="homework-8.js"></script>
-    <script src="homework-9.js" type="module"></script>
-    <script src="homework-10.js" type="module"></script>
-    <script src="homework-11.js"></script>
+
+    <script type="module" src="./main.js"></script>
 </body>
+
 
 </html>
